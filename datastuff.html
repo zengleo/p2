@@ -69,6 +69,7 @@
         //d = await d3.csv('/p2/test_scores.csv');
         d = data[field]
         console.log(data)
+        console.log(typeof data)
         var flags = [], output = [], l = d.length, i;
         for( i=0; i<l; i++) {
           if( flags[d[i]]) continue;
