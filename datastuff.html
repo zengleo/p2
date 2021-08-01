@@ -3,20 +3,21 @@
   <style> circle {fill: lightblue; stroke: black;} </style>
   <body>
     <h1>Interactive Dataset</h1>
-    <svg width=300 height=300></svg>
+    <label for="plot">Plot</label>
+    <svg id="plot" width=1000 height=1000></svg>
     <script>
-      function graph(f,d){
-        var x = d3.scaleLinear().domain([0,150]).range([0,500])
-        var y = d3.scaleLinear().domain([0,150]).range([500,0])
+      function graph(f,d,v){
+        var x = d3.scaleLinear().domain([40,100]).range([0,1000])
+        var y = d3.scaleLinear().domain([40,100]).range([1000,0])
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
-        .attr("cx",function(d) {return x(d.AverageCityMPG);})
-        .attr("cy",function(d) {return y(d.AverageHighwayMPG);})
-        .attr("r",function(d) {return parseInt(d.EngineCylinders)+2;})
+        .attr("cx",function(d) {return x(d.pretest);})
+        .attr("cy",function(d) {return y(d.posttest);})
+        .attr("r",3)
 
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
-        d3.select("svg").append("g").attr("transform","translate(50,250)").call(d3.axisBottom(x));
+        d3.select("svg").append("g").attr("transform","translate(50,1050)").call(d3.axisBottom(x));
       }
       function filter(arr, criteria) {
         return arr.filter(function(obj) {
@@ -49,7 +50,7 @@
       <option value="lunch" selected>Subsidized Lunch</option>
     </select>
     <div id="container"></div>
-    <button onclick="window.location.href='/p2/index.html'">Refresh</button>
+    <button onclick="bclick(data, document.getElementById("field").value, document.getElementById("glist").value);">Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
     <script>
       function generate(field, data) {
@@ -80,6 +81,11 @@
         label.htmlFor = "glist";
 
         document.getElementById("container").appendChild(label).appendChild(select);
+      }
+      function bclick(data, field, value) {
+        var d = filter(data, {field: value})
+        document.getElementById("plot").innerHTML = field + ": " + value
+        graph(field,d,value)
       }
     </script>
   </body>
