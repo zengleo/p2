@@ -6,9 +6,10 @@
     <label for="plot">Plot</label>
     <svg id="plot" width=500 height=500></svg>
     <script>
-      function graph(f,d,v){
+      function graph(f,v){
         var x = d3.scaleLinear().domain([40,100]).range([0,400])
         var y = d3.scaleLinear().domain([40,100]).range([400,0])
+        var data = d3.csv('/p2/test_scores.csv');
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
@@ -26,22 +27,11 @@
           });
         });
       }
-      var field = "lunch"
-      var data = d3.csv('/p2/test_scores.csv');
-      var flags = [], output = [], l = data.length, i;
-      for( i=0; i<l; i++) {
-        if( flags[data[i].lunch]) continue;
-        flags[data[i].lunch] = true;
-        output.push(data[i].lunch);
-      }
-      var d = filter(data, {lunch: 21})
-      graph(field, d)
-      var field = 
      
     </script>
     <label for="field">Choose a field:</label>
 
-    <select id="field" onchange="generate(this.value, data);">
+    <select id="field" onchange="generate(this.value);">
       <option value="n_student">Class Size</option>
       <option value="school_setting">School Setting</option>
       <option value="school_type">School Type</option>
@@ -53,7 +43,7 @@
     <button onclick="bclick(data, document.getElementById("field").value, document.getElementById("glist").value);">Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
     <script>
-      function generate(field, data) {
+      function generate(field) {
  
         var field = "lunch"
         var data = d3.csv('/p2/test_scores.csv');
@@ -84,8 +74,9 @@
       }
       function bclick(data, field, value) {
         var d = filter(data, {field: value})
+        var data = d3.csv('/p2/test_scores.csv');
         document.getElementById("plot").innerHTML = field + ": " + value
-        graph(field,d,value)
+        graph(field,value)
       }
     </script>
   </body>
