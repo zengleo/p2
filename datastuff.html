@@ -17,7 +17,7 @@
         var x = d3.scaleLinear().domain([40,70]).range([0,400])
         var y = d3.scaleLinear().domain([60,100]).range([400,0])
         data = await d3.csv('/p2/test_scores.csv');
-        console.log(data)
+
         var d = filter(data, {f: v})
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
@@ -67,6 +67,7 @@
         //var field = "lunch"
         d = await d3.csv('/p2/test_scores.csv');
         data = d[field]
+        console.log(data)
         var flags = [], output = [], l = data.length, i;
         for( i=0; i<l; i++) {
           if( flags[data[i]]) continue;
