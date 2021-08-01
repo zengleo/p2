@@ -19,6 +19,21 @@
 
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
         d3.select("svg").append("g").attr("transform","translate(50,450)").call(d3.axisBottom(x));
+        
+        svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("Pretest Scores (out of 100)");
+        
+        svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", 6)
+        .attr("dy", ".75em")
+        .attr("transform", "rotate(-90)")
+        .text("Posttest Scores (out of 100)");
       }
       function filter(arr, criteria) {
         return arr.filter(function(obj) {
@@ -27,6 +42,8 @@
           });
         });
       }
+      
+      graph("lunch","Does not Qualify");
      
     </script>
     <label for="field">Choose a field:</label>
