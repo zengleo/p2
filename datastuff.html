@@ -15,16 +15,16 @@
         });
       }
       async function graph(f,v){
-        var x = d3.scaleLinear().domain([40,70]).range([0,400])
-        var y = d3.scaleLinear().domain([60,100]).range([400,0])
+        var x = d3.scaleLinear().domain([0,100]).range([0,400])
+        var y = d3.scaleLinear().domain([0,100]).range([400,0])
         data = await d3.csv('/p2/test_scores.csv');
 
         var d = filter(data, {f: v})
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(data).enter().append("circle")
-        .attr("cx",function(d) {return parseInt(d.pretest);})
-        .attr("cy",function(d) {return parseInt(d.posttest);})
+        .attr("cx",function(d) {return x(d.pretest);})
+        .attr("cy",function(d) {return y(d.posttest);})
         .attr("r",2);
 
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
