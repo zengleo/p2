@@ -5,6 +5,7 @@
     <h1>Interactive Dataset</h1>
     <h3 id="plotname">Plot</h3>
     <svg id="plot" width=500 height=500></svg>
+    <p></p>
     <script>
       data = d3.csv('/p2/test_scores.csv');
 //       function filter(arr, criteria) {
@@ -68,10 +69,11 @@
       <option value="gender">Gender</option>
       <option value="lunch" selected>Subsidized Lunch</option>
     </select>
+    <p></p>
     <label for="glist">Choose a value:</label>
     <div id="container"></div>
     <button onclick='bclick(document.getElementById("field").value, document.getElementById("glist").value);'>Refresh</button>
-    <button onclick="window.location.href='/p2/index.html'">Back</button>
+    <button onclick="window.location.href='/p2/index.html'">Back to Home</button>
     <script>
       function generate(field) {
 
