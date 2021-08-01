@@ -49,9 +49,9 @@
         var data = d3.csv('/p2/test_scores.csv');
         var flags = [], output = [], l = data.length, i;
         for( i=0; i<l; i++) {
-          if( flags[data[i][field]]) continue;
-          flags[data[i][field]] = true;
-          output.push(data[i][field]);
+          if( flags[data[field][i]]) continue;
+          flags[data[field][i]] = true;
+          output.push(data[field][i]);
         }
 
         var select = document.createElement("select");
