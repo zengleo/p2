@@ -21,8 +21,8 @@
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(data).enter().append("circle")
-        .attr("cx",function(d) {return x(d.pretest);})
-        .attr("cy",function(d) {return y(d.posttest);})
+        .attr("cx",function(d) {return parseInt(d.pretest);})
+        .attr("cy",function(d) {return parseInt(d.posttest);})
         .attr("r",2)
 
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
@@ -31,8 +31,8 @@
         d3.select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
-        .attr("x", width)
-        .attr("y", height - 6)
+        .attr("x", 500)
+        .attr("y", 500 - 6)
         .text("Pretest Scores (out of 100)");
         
         d3.select("svg").append("text")
