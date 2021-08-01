@@ -67,7 +67,13 @@
  
         //var field = "lunch"
         //d = await d3.csv('/p2/test_scores.csv');
-        d = data[field]
+        if (field == "lunch"){ d = data.lunch; }
+        if (field == "n_student"){ d = data.n_student; }
+        if (field == "school_setting"){ d = data.school_setting; }
+        if (field == "school_type"){ d = data.school_type; }
+        if (field == "teaching_method"){ d = data.teaching_method; }
+        if (field == "gender"){ d = data.gender; }
+        //d = data[field]
         console.log(data)
         console.log(typeof data)
         var flags = [], output = [], l = d.length, i;
