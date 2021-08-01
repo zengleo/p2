@@ -13,10 +13,10 @@
           });
         });
       }
-      function graph(f,v){
+      async function graph(f,v){
         var x = d3.scaleLinear().domain([40,100]).range([0,400])
         var y = d3.scaleLinear().domain([40,100]).range([400,0])
-        data = d3.csv('/p2/test_scores.csv');
+        data = await d3.csv('/p2/test_scores.csv');
         console.log(data)
         //var d = filter(data, {f: v})
 
@@ -62,10 +62,10 @@
     <button onclick="bclick(document.getElementById("field").value, document.getElementById("glist").value);">Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
     <script>
-      function generate(field) {
+      async function generate(field) {
  
         //var field = "lunch"
-        data = d3.csv('/p2/test_scores.csv')[field];
+        data = await d3.csv('/p2/test_scores.csv')[field];
         var flags = [], output = [], l = data.length, i;
         for( i=0; i<l; i++) {
           if( flags[data[i]]) continue;
@@ -91,8 +91,8 @@
 
         document.getElementById("container").appendChild(label).appendChild(select);
       }
-      function bclick(field, value) {
-        data = d3.csv('/p2/test_scores.csv');
+      async function bclick(field, value) {
+        data = await d3.csv('/p2/test_scores.csv');
         var d = filter(data, {field: value})
         document.getElementById("plotname").innerHTML = field + ": " + value
         graph(field,value)
