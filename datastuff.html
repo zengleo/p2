@@ -64,23 +64,49 @@
     <button onclick="window.location.href='/p2/index.html'">Back</button>
     <script>
       function generate(field) {
- 
-        //var field = "lunch"
-        //d = await d3.csv('/p2/test_scores.csv');
-        if (field == "lunch"){ d = data.lunch; }
-        if (field == "n_student"){ d = data.n_student; }
-        if (field == "school_setting"){ d = data.school_setting; }
-        if (field == "school_type"){ d = data.school_type; }
-        if (field == "teaching_method"){ d = data.teaching_method; }
-        if (field == "gender"){ d = data.gender; }
-        //d = data[field]
-        console.log(d)
-        console.log(typeof d)
-        var flags = [], output = [], l = d.length, i;
-        for( i=0; i<l; i++) {
-          if( flags[d[i]]) continue;
-          flags[d[i]] = true;
-          output.push(d[i]);
+
+        var flags = [], output = [], l = data.length, i;
+        if (field == "n_student"){
+          for( i=0; i<l; i++) {
+            if( flags[data[i].n_student]) continue;
+            flags[data[i].n_student] = true;
+            output.push(data[i].n_student);
+          }
+        }
+        if (field == "school_setting"){
+          for( i=0; i<l; i++) {
+            if( flags[data[i].school_setting]) continue;
+            flags[data[i].school_setting] = true;
+            output.push(data[i].school_setting);
+          }
+        }
+        if (field == "school_type"){
+          for( i=0; i<l; i++) {
+            if( flags[data[i].school_type]) continue;
+            flags[data[i].school_type] = true;
+            output.push(data[i].school_type);
+          }
+        }
+        if (field == "teaching_method"){
+          for( i=0; i<l; i++) {
+            if( flags[data[i].teaching_method]) continue;
+            flags[data[i].teaching_method] = true;
+            output.push(data[i].teaching_method);
+          }
+        }
+        if (field == "gender"){
+          for( i=0; i<l; i++) {
+            if( flags[data[i].gender]) continue;
+            flags[data[i].gender] = true;
+            output.push(data[i].gender);
+          }
+        }
+        if (field == "lunch"){
+          for( i=0; i<l; i++) {
+            if( flags[data[i].lunch]) continue;
+            flags[data[i].lunch] = true;
+            output.push(data[i].lunch);
+          }
         }
 
         var select = document.createElement("select");
