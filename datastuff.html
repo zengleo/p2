@@ -2,9 +2,8 @@
 <script src='https://d3js.org/d3.v5.min.js'></script>
   <style> circle {fill: lightblue; stroke: black;} </style>
   <svg width=300 height=300></svg>
-  <body onload="init()">
+  <body>
     <h1>Interactive Dataset</h1>
-    <p>large graph</p>
     <script>
     async function init(){
       data = await d3.csv("https://flunky.github.io/cars2017.csv");
@@ -24,8 +23,17 @@
       
     }
     </script>
-  
-  
+    <label for="field">Choose a field:</label>
+
+    <select id="field">
+      <option value="size">Class Size</option>
+      <option value="setting">School Setting</option>
+      <option value="type">School Type</option>
+      <option value="method" selected>Teaching Method</option>
+      <option value="gender" selected>Gender</option>
+      <option value="lunch" selected>Subsidized Lunch</option>
+    </select>
+    <button onclick="window.location.href='/p2/index.html'">Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
   </body>
 </html>
