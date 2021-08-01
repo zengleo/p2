@@ -141,7 +141,14 @@
       function bclick(field, value) {
         //data = await d3.csv('/p2/test_scores.csv');
         //var d = filter(data, {field: value})
-        document.getElementById("plotname").innerHTML = field + ": " + value
+        if (field == "n_student") {var name = "Classroom Size}
+        if (field == "school_setting") {var name = "School Setting}
+        if (field == "school_type") {var name = "School Type}
+        if (field == "teaching_method") {var name = "Teaching Method}
+        if (field == "gender") {var name = "Gender}
+        if (field == "lunch") {var name = "Lunch Qualification}
+        
+        document.getElementById("plotname").innerHTML = name + ": " + value
         graph(field,value)
       }
     </script>
