@@ -1,1 +1,31 @@
-<button onclick="window.location.href='/p2/index.html'">Back</button>
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+  <style> circle {fill: lightblue; stroke: black;} </style>
+  <svg width=300 height=300></svg>
+  <body onload="init()">
+    <h1>Interactive Dataset</h1>
+    <p>large graph</p>
+    <script>
+    async function init(){
+      data = await d3.csv("https://flunky.github.io/cars2017.csv");
+      var x = d3.scaleLog().domain([10,150]).range([0,200])
+      var y = d3.scaleLog().domain([10,150]).range([200,0])
+      var t = [10,20,50,100]
+
+      d3.select("svg").append("g").attr("transform","translate(50,50)")
+      .selectAll("circle").data(data).enter().append("circle")
+      .attr("cx",function(d) {return x(d.AverageCityMPG);})
+      .attr("cy",function(d) {return y(d.AverageHighwayMPG);})
+      .attr("r",function(d) {return parseInt(d.EngineCylinders)+2;})
+
+      d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y).tickValues(t).tickFormat(d3.format("~s")));
+      d3.select("svg").append("g").attr("transform","translate(50,250)").call(d3.axisBottom(x).tickValues(t).tickFormat(d3.format("~s")));
+
+      
+    }
+    </script>
+  
+  
+    <button onclick="window.location.href='/p2/index.html'">Back</button>
+  </body>
+</html>
