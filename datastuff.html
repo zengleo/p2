@@ -6,6 +6,7 @@
     <h3 id="plotname">Plot</h3>
     <svg id="plot" width=500 height=500></svg>
     <script>
+      data = d3.csv('/p2/test_scores.csv');
       function filter(arr, criteria) {
         return arr.filter(function(obj) {
           return Object.keys(criteria).every(function(c) {
@@ -62,17 +63,17 @@
     <button onclick='bclick(document.getElementById("field").value, document.getElementById("glist").value);'>Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
     <script>
-      async function generate(field) {
+      function generate(field) {
  
         //var field = "lunch"
-        d = await d3.csv('/p2/test_scores.csv');
-        data = d[field]
-        console.log(data)
-        var flags = [], output = [], l = data.length, i;
+        //d = await d3.csv('/p2/test_scores.csv');
+        d = data[field]
+        console.log(d)
+        var flags = [], output = [], l = d.length, i;
         for( i=0; i<l; i++) {
-          if( flags[data[i]]) continue;
-          flags[data[i]] = true;
-          output.push(data[i]);
+          if( flags[d[i]]) continue;
+          flags[d[i]] = true;
+          output.push(d[i]);
         }
 
         var select = document.createElement("select");
@@ -93,8 +94,8 @@
 
         document.getElementById("container").appendChild(label).appendChild(select);
       }
-      async function bclick(field, value) {
-        data = await d3.csv('/p2/test_scores.csv');
+      function bclick(field, value) {
+        //data = await d3.csv('/p2/test_scores.csv');
         var d = filter(data, {field: value})
         document.getElementById("plotname").innerHTML = field + ": " + value
         graph(field,value)
