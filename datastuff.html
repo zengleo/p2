@@ -59,6 +59,7 @@
       <option value="gender">Gender</option>
       <option value="lunch" selected>Subsidized Lunch</option>
     </select>
+    <label for="glist">Choose a value:</label>
     <div id="container"></div>
     <button onclick='bclick(document.getElementById("field").value, document.getElementById("glist").value);'>Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
@@ -108,7 +109,9 @@
             output.push(data[i].lunch);
           }
         }
-        if (!!document.getElementById("glist")){document.getElementById("glist").remove();}
+        if (!!document.getElementById("glist")){
+          document.getElementById("glist").remove();
+        }
         
         var select = document.createElement("select");
         select.name = "glist";
@@ -121,10 +124,6 @@
             option.text = val;
             select.appendChild(option);
         }
-
-        var label = document.createElement("label");
-        label.innerHTML = "Choose a value"
-        label.htmlFor = "glist";
 
         document.getElementById("container").appendChild(label).appendChild(select);
       }
