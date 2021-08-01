@@ -5,8 +5,8 @@
   <body>
     <h1>Interactive Dataset</h1>
     <script>
-    async function init(){
-      data = await d3.csv("https://flunky.github.io/cars2017.csv");
+    
+      data = d3.csv('/p2/test_scores.csv');
       var x = d3.scaleLog().domain([10,150]).range([0,200])
       var y = d3.scaleLog().domain([10,150]).range([200,0])
       var t = [10,20,50,100]
@@ -20,8 +20,7 @@
       d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y).tickValues(t).tickFormat(d3.format("~s")));
       d3.select("svg").append("g").attr("transform","translate(50,250)").call(d3.axisBottom(x).tickValues(t).tickFormat(d3.format("~s")));
 
-      
-    }
+     
     </script>
     <label for="field">Choose a field:</label>
 
