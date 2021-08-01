@@ -7,8 +7,8 @@
     <svg id="plot" width=1000 height=1000></svg>
     <script>
       function graph(f,d,v){
-        var x = d3.scaleLinear().domain([40,100]).range([0,1000])
-        var y = d3.scaleLinear().domain([40,100]).range([1000,0])
+        var x = d3.scaleLinear().domain([40,100]).range([0,900])
+        var y = d3.scaleLinear().domain([40,100]).range([900,0])
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
@@ -17,7 +17,7 @@
         .attr("r",3)
 
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
-        d3.select("svg").append("g").attr("transform","translate(50,1050)").call(d3.axisBottom(x));
+        d3.select("svg").append("g").attr("transform","translate(50,950)").call(d3.axisBottom(x));
       }
       function filter(arr, criteria) {
         return arr.filter(function(obj) {
