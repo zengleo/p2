@@ -27,8 +27,8 @@
         if (f == "gender") {var d = data.filter(function(d){ return d.gender == v; })}
         if (f == "lunch") {var d = data.filter(function(d){ return d.lunch == v; })}
         
-        if (!!document.getElementsByTagName("circle")){for (const val of document.getElementsByTagName("circle")) {val.remove();}}
-
+        //if (!!document.getElementsByTagName("circle")){for (const val of document.getElementsByTagName("circle")) {val.remove();}}
+        document.getElementById("plot").innerHTML = ''
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
         .attr("cx",function(d) {return x(d.pretest);})
