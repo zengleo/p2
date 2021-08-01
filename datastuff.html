@@ -16,7 +16,7 @@
       function graph(f,v){
         var x = d3.scaleLinear().domain([40,100]).range([0,400])
         var y = d3.scaleLinear().domain([40,100]).range([400,0])
-        var data = d3.csv('/p2/test_scores.csv');
+        data = d3.csv('/p2/test_scores.csv');
         console.log(data)
         //var d = filter(data, {f: v})
 
@@ -65,7 +65,7 @@
       function generate(field) {
  
         //var field = "lunch"
-        var data = d3.csv('/p2/test_scores.csv')[field];
+        data = d3.csv('/p2/test_scores.csv')[field];
         var flags = [], output = [], l = data.length, i;
         for( i=0; i<l; i++) {
           if( flags[data[i]]) continue;
@@ -92,7 +92,7 @@
         document.getElementById("container").appendChild(label).appendChild(select);
       }
       function bclick(field, value) {
-        var data = d3.csv('/p2/test_scores.csv');
+        data = d3.csv('/p2/test_scores.csv');
         var d = filter(data, {field: value})
         document.getElementById("plotname").innerHTML = field + ": " + value
         graph(field,value)
