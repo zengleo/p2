@@ -5,14 +5,12 @@
   <body>
     <h1>Interactive Dataset</h1>
     <script>
-      var field = "lunch"
-      function graph(f){
-        data = d3.csv('/p2/test_scores.csv');
+      function graph(f,d){
         var x = d3.scaleLinear().domain([0,150]).range([0,500])
         var y = d3.scaleLinear().domain([0,150]).range([500,0])
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
-        .selectAll("circle").data(data).enter().append("circle")
+        .selectAll("circle").data(d).enter().append("circle")
         .attr("cx",function(d) {return x(d.AverageCityMPG);})
         .attr("cy",function(d) {return y(d.AverageHighwayMPG);})
         .attr("r",function(d) {return parseInt(d.EngineCylinders)+2;})
@@ -20,7 +18,23 @@
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
         d3.select("svg").append("g").attr("transform","translate(50,250)").call(d3.axisBottom(x));
       }
-      graph(field)
+      function filter(arr, criteria) {
+        return arr.filter(function(obj) {
+          return Object.keys(criteria).every(function(c) {
+            return obj[c] == criteria[c];
+          });
+        });
+      }
+      var field = "lunch"
+      var data = d3.csv('/p2/test_scores.csv');
+      var flags = [], output = [], l = data.length, i;
+      for( i=0; i<l; i++) {
+        if( flags[data[i].lunch]) continue;
+        flags[data[i].lunch] = true;
+        output.push(data[i].lunch);
+      }
+      var d = filter(data, {lunch: 21})
+      graph(field, d)
       var field = 
      
     </script>
