@@ -7,19 +7,25 @@
     <svg id="plot" width=500 height=500></svg>
     <script>
       data = d3.csv('/p2/test_scores.csv');
-      function filter(arr, criteria) {
-        return arr.filter(function(obj) {
-          return Object.keys(criteria).every(function(c) {
-            return obj[c] == criteria[c];
-          });
-        });
-      }
+//       function filter(arr, criteria) {
+//         return arr.filter(function(obj) {
+//           return Object.keys(criteria).every(function(c) {
+//             return obj[c] == criteria[c];
+//           });
+//         });
+//       }
       async function graph(f,v){
         var x = d3.scaleLinear().domain([0,100]).range([0,400])
         var y = d3.scaleLinear().domain([0,100]).range([400,0])
         data = await d3.csv('/p2/test_scores.csv');
 
-        var d = filter(data, {f: v})
+        //var d = filter(data, {f: v})
+        if (f == "n_student") {var d = data.filter(function(d){ return d.n_student == v; })}
+        if (f == "school_setting") {var d = data.filter(function(d){ return d.school_setting == v; })}
+        if (f == "school_type") {var d = data.filter(function(d){ return d.school_type == v; })}
+        if (f == "teaching_method") {var d = data.filter(function(d){ return d.teaching_method == v; })}
+        if (f == "gender") {var d = data.filter(function(d){ return d.gender == v; })}
+        if (f == "lunch") {var d = data.filter(function(d){ return d.lunch == v; })}
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
