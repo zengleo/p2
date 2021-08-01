@@ -26,6 +26,8 @@
         if (f == "teaching_method") {var d = data.filter(function(d){ return d.teaching_method == v; })}
         if (f == "gender") {var d = data.filter(function(d){ return d.gender == v; })}
         if (f == "lunch") {var d = data.filter(function(d){ return d.lunch == v; })}
+        
+        if (!!document.getElementsByTagName("circle")){for (const val of document.getElementsByTagName("circle")) {val.remove();}}
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
@@ -39,14 +41,14 @@
         d3.select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
-        .attr("x", 500)
+        .attr("x", 200)
         .attr("y", 500 - 6)
         .text("Pretest Scores (out of 100)");
         
         d3.select("svg").append("text")
         .attr("class", "y label")
         .attr("text-anchor", "end")
-        .attr("y", 6)
+        .attr("y", 200)
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Posttest Scores (out of 100)");
