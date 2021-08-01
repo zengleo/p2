@@ -40,7 +40,7 @@
     </script>
     <label for="field">Choose a field:</label>
 
-    <select id="field">
+    <select id="field" onchange="generate(this.value, data);">
       <option value="n_student">Class Size</option>
       <option value="school_setting">School Setting</option>
       <option value="school_type">School Type</option>
@@ -48,7 +48,39 @@
       <option value="gender">Gender</option>
       <option value="lunch" selected>Subsidized Lunch</option>
     </select>
+    <div id="container"></div>
     <button onclick="window.location.href='/p2/index.html'">Refresh</button>
     <button onclick="window.location.href='/p2/index.html'">Back</button>
+    <script>
+      function generate(field, data) {
+ 
+        var field = "lunch"
+        var data = d3.csv('/p2/test_scores.csv');
+        var flags = [], output = [], l = data.length, i;
+        for( i=0; i<l; i++) {
+          if( flags[data[i].lunch]) continue;
+          flags[data[i].lunch] = true;
+          output.push(data[i].lunch);
+        }
+
+        var select = document.createElement("select");
+        select.name = "glist";
+        select.id = "glist"
+
+        for (const val of output)
+        {
+            var option = document.createElement("option");
+            option.value = val;
+            option.text = val;
+            select.appendChild(option);
+        }
+
+        var label = document.createElement("label");
+        label.innerHTML = "Choose a value"
+        label.htmlFor = "glist";
+
+        document.getElementById("container").appendChild(label).appendChild(select);
+      }
+    </script>
   </body>
 </html>
