@@ -14,8 +14,8 @@
         });
       }
       async function graph(f,v){
-        var x = d3.scaleLinear().domain([40,100]).range([0,400])
-        var y = d3.scaleLinear().domain([40,100]).range([400,0])
+        var x = d3.scaleLinear().domain([40,70]).range([0,400])
+        var y = d3.scaleLinear().domain([60,100]).range([400,0])
         data = await d3.csv('/p2/test_scores.csv');
         console.log(data)
         var d = filter(data, {f: v})
