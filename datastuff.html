@@ -3,7 +3,7 @@
   <style> circle {fill: lightblue; stroke: black;} </style>
   <body>
     <h1>Interactive Dataset</h1>
-    <label for="plot">Plot</label>
+    <h3 id="plotname">Plot</h3>
     <svg id="plot" width=500 height=500></svg>
     <script>
       function graph(f,v){
@@ -75,7 +75,7 @@
       function bclick(field, value) {
         var data = d3.csv('/p2/test_scores.csv');
         var d = filter(data, {field: value})
-        document.getElementById("plot").innerHTML = field + ": " + value
+        document.getElementById("plotname").innerHTML = field + ": " + value
         graph(field,value)
       }
     </script>
