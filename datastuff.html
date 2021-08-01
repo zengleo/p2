@@ -6,6 +6,13 @@
     <h3 id="plotname">Plot</h3>
     <svg id="plot" width=500 height=500></svg>
     <script>
+      function filter(arr, criteria) {
+        return arr.filter(function(obj) {
+          return Object.keys(criteria).every(function(c) {
+            return obj[c] == criteria[c];
+          });
+        });
+      }
       function graph(f,v){
         var x = d3.scaleLinear().domain([40,100]).range([0,400])
         var y = d3.scaleLinear().domain([40,100]).range([400,0])
@@ -35,13 +42,6 @@
         .attr("dy", ".75em")
         .attr("transform", "rotate(-90)")
         .text("Posttest Scores (out of 100)");
-      }
-      function filter(arr, criteria) {
-        return arr.filter(function(obj) {
-          return Object.keys(criteria).every(function(c) {
-            return obj[c] == criteria[c];
-          });
-        });
       }
       
       graph("lunch","Does not Qualify");
