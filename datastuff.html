@@ -4,11 +4,11 @@
   <body>
     <h1>Interactive Dataset</h1>
     <label for="plot">Plot</label>
-    <svg id="plot" width=1000 height=1000></svg>
+    <svg id="plot" width=500 height=500></svg>
     <script>
       function graph(f,d,v){
-        var x = d3.scaleLinear().domain([40,100]).range([0,900])
-        var y = d3.scaleLinear().domain([40,100]).range([900,0])
+        var x = d3.scaleLinear().domain([40,100]).range([0,400])
+        var y = d3.scaleLinear().domain([40,100]).range([400,0])
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
@@ -17,7 +17,7 @@
         .attr("r",3)
 
         d3.select("svg").append("g").attr("transform","translate(50,50)").call(d3.axisLeft(y));
-        d3.select("svg").append("g").attr("transform","translate(50,950)").call(d3.axisBottom(x));
+        d3.select("svg").append("g").attr("transform","translate(50,450)").call(d3.axisBottom(x));
       }
       function filter(arr, criteria) {
         return arr.filter(function(obj) {
