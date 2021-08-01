@@ -22,7 +22,7 @@
         var d = filter(data, {f: v})
 
         d3.select("svg").append("g").attr("transform","translate(50,50)")
-        .selectAll("circle").data(data).enter().append("circle")
+        .selectAll("circle").data(d).enter().append("circle")
         .attr("cx",function(d) {return x(d.pretest);})
         .attr("cy",function(d) {return y(d.posttest);})
         .attr("r",2);
@@ -108,7 +108,8 @@
             output.push(data[i].lunch);
           }
         }
-
+        if (!!document.getElementById("glist")){document.getElementById("glist").remove();}
+        
         var select = document.createElement("select");
         select.name = "glist";
         select.id = "glist"
@@ -129,7 +130,7 @@
       }
       function bclick(field, value) {
         //data = await d3.csv('/p2/test_scores.csv');
-        var d = filter(data, {field: value})
+        //var d = filter(data, {field: value})
         document.getElementById("plotname").innerHTML = field + ": " + value
         graph(field,value)
       }
