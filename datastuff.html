@@ -136,15 +136,16 @@
      
     </script>
     <label for="field">Choose a field:</label>
-
-    <select id="field" onchange="generate(this.value);">
-      <option value="n_student">Class Size</option>
-      <option value="school_setting">School Setting</option>
-      <option value="school_type">School Type</option>
-      <option value="teaching_method">Teaching Method</option>
-      <option value="gender">Gender</option>
-      <option value="lunch" selected>Subsidized Lunch</option>
-    </select>
+    <div>
+      <select id="field" onchange="generate(this.value);">
+        <option value="n_student">Class Size</option>
+        <option value="school_setting">School Setting</option>
+        <option value="school_type">School Type</option>
+        <option value="teaching_method">Teaching Method</option>
+        <option value="gender">Gender</option>
+        <option value="lunch" selected>Subsidized Lunch</option>
+      </select>
+    </div>
     <p></p>
     <label for="glist">Choose a value:</label>
     <div id="container"></div>
