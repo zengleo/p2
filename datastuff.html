@@ -55,28 +55,6 @@
         .attr("transform", "rotate(-90)")
         .text("Posttest Scores (out of 100)");
       }
-      
-      graph("lunch","Does not Qualify");
-     
-    </script>
-    <label for="field">Choose a field:</label>
-
-    <select id="field" onchange="generate(this.value);">
-      <option value="n_student">Class Size</option>
-      <option value="school_setting">School Setting</option>
-      <option value="school_type">School Type</option>
-      <option value="teaching_method">Teaching Method</option>
-      <option value="gender">Gender</option>
-      <option value="lunch" selected>Subsidized Lunch</option>
-    </select>
-    <p></p>
-    <label for="glist">Choose a value:</label>
-    <div id="container"></div>
-    <p></p>
-    <p></p>
-    <button onclick='bclick(document.getElementById("field").value, document.getElementById("glist").value);'>Refresh</button>
-    <button onclick="window.location.href='/p2/index.html'">Back to Home</button>
-    <script>
       function generate(field) {
 
         var flags = [], output = [], l = data.length, i;
@@ -153,6 +131,29 @@
         document.getElementById("plotname").innerHTML = name + ": " + value
         graph(field,value)
       }
+      
+      graph("lunch","Does not Qualify");
+     
+    </script>
+    <label for="field">Choose a field:</label>
+
+    <select id="field" onchange="generate(this.value);">
+      <option value="n_student">Class Size</option>
+      <option value="school_setting">School Setting</option>
+      <option value="school_type">School Type</option>
+      <option value="teaching_method">Teaching Method</option>
+      <option value="gender">Gender</option>
+      <option value="lunch" selected>Subsidized Lunch</option>
+    </select>
+    <p></p>
+    <label for="glist">Choose a value:</label>
+    <div id="container"></div>
+    <p></p>
+    <p></p>
+    <button onclick='bclick(document.getElementById("field").value, document.getElementById("glist").value);'>Refresh</button>
+    <button onclick="window.location.href='/p2/index.html'">Back to Home</button>
+    <script>
+      
     </script>
   </body>
 </html>
