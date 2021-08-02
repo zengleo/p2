@@ -3,7 +3,7 @@
   <style> circle {fill: lightblue; stroke: black;} </style>
   <body>
     <h1>Interactive Dataset</h1>
-    <h3 id="plotname">Plot</h3>
+    <h3 id="plotname">Interactive Plot</h3>
     <svg id="plot" width=500 height=500></svg>
     <p></p>
     <script>
@@ -42,7 +42,7 @@
         d3.select("svg").append("text")
         .attr("class", "x label")
         .attr("text-anchor", "end")
-        .attr("x", 100)
+        .attr("x", 300)
         .attr("y", 500 - 6)
         .text("Pretest Scores (out of 100)");
         
