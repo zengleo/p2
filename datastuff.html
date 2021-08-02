@@ -30,6 +30,15 @@
         
         //if (!!document.getElementsByTagName("circle")){for (const val of document.getElementsByTagName("circle")) {val.remove();}}
         document.getElementById("plot").innerHTML = ''
+        
+        d3.select("svg").append('line')
+          .style("stroke", "black")
+          .style("stroke-width", 2)
+          .attr("x1", 50)
+          .attr("y1", 50)
+          .attr("x2", 450)
+          .attr("y2", 450); 
+        
         d3.select("svg").append("g").attr("transform","translate(50,50)")
         .selectAll("circle").data(d).enter().append("circle")
         .attr("cx",function(d) {return x(d.pretest);})
